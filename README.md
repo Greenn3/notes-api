@@ -1,4 +1,4 @@
-# Notes API (Technical Task)
+# Notes API
 
 Simple REST service for managing Authors and Notes.
 
