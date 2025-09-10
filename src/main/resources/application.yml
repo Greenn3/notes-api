@@ -16,4 +16,4 @@ spring:
       enabled: true
       path: /h2-console
 
-# OpenAPI - no extra config needed; UI at /swagger-ui.html
+

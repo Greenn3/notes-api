@@ -44,8 +44,7 @@ public class GlobalExceptionHandler {
         for (FieldError fe : ex.getBindingResult().getFieldErrors()) {
             errors.put(fe.getField(), fe.getDefaultMessage());
         }
-        ProblemDetail p = pd(HttpStatus.BAD_REQUEST, "Validation failed",
-                "One or more fields have invalid values.", req);
+        ProblemDetail p = pd(HttpStatus.BAD_REQUEST, "Validation failed", "One or more fields have invalid values.", req);
         p.setProperty("errors", errors);
         return p;
     }

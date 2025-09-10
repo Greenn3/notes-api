@@ -1,7 +1,7 @@
 package com.example.notes.service;
 
 import com.example.notes.Mapper;
-import com.example.notes.dto.NoteRequest;
+import com.example.notes.dto.NoteCreateRequest;
 import com.example.notes.entity.Author;
 import com.example.notes.entity.Note;
 import com.example.notes.exception.NotFoundException;
@@ -18,10 +18,11 @@ public class NoteService {
     private final AuthorService authors;
 
     public NoteService(NoteRepository notes, AuthorService authors) {
-        this.notes = notes; this.authors = authors;
+        this.notes = notes;
+        this.authors = authors;
     }
 
-    public Note create(NoteRequest req) {
+    public Note create(NoteCreateRequest req) {
         Author author = authors.getOrThrow(req.authorId());
         return notes.save(Mapper.toEntity(req, author));
 
@@ -33,7 +34,9 @@ public class NoteService {
     }
 
     @Transactional(readOnly = true)
-    public List<Note> list() { return notes.findAll(); }
+    public List<Note> list() {
+        return notes.findAll();
+    }
 
     public void delete(Long id) {
         Note n = getOrThrow(id);

@@ -15,7 +15,9 @@ import java.util.List;
 public class AuthorService {
     private final AuthorRepository authors;
 
-    public AuthorService(AuthorRepository authors) { this.authors = authors; }
+    public AuthorService(AuthorRepository authors) {
+        this.authors = authors;
+    }
 
     public Author create(AuthorCreateRequest req) {
         return authors.save(Mapper.toEntity(req));
@@ -27,5 +29,7 @@ public class AuthorService {
     }
 
     @Transactional(readOnly = true)
-    public List<Author> list() { return authors.findAll(); }
+    public List<Author> list() {
+        return authors.findAll();
+    }
 }

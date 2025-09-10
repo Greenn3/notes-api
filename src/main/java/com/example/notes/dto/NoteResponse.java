@@ -9,4 +9,5 @@ public record NoteResponse(
         LocalDateTime createdAt,
         Long authorId,
         String authorName
-) {}
+) {
+}
